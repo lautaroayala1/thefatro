@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follación pura</title>
+  <style>
+    body {
+      background: #0c1e3c;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    #countdown {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .footer {
+      font-size: 1rem;
+      margin-top: 20px;
+      color: #ccc;
+    }
+    img {
+      width: 200px;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Follación pura</h1>
+  <div id="countdown">Calculando...</div>
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/08/18/audio_9f7ecdf871.mp3?filename=healing-ambient-113040.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  <img src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif" alt="GIF divertido">
+  <div class="footer">Esta página fue enteramente creada por Lautaro para impresionar a The Fat Ro</div>
+
+  <script>
+    function actualizarCuentaRegresiva() {
+      const objetivo = new Date('2025-07-04T17:00:00-03:00');
+      const ahora = new Date();
+      const diferencia = objetivo - ahora;
+
+      if (diferencia <= 0) {
+        document.getElementById('countdown').textContent = '¡Ya es 4 de julio a las 17:00!';
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      document.getElementById('countdown').textContent = 
+        `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    setInterval(actualizarCuentaRegresiva, 1000);
+    actualizarCuentaRegresiva();
+  </script>
+</body>
+</html>
